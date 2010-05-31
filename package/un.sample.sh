@@ -104,7 +104,7 @@ configureService() {
                 launchctl stop com.${company}.${BLD_PRODUCT} 2>/dev/null
             fi
 		elif which service >/dev/null 2>&1 ; then
-			/sbin/service $BLD_PRODUCT $action >/dev/null 2>&1
+			service $BLD_PRODUCT $action >/dev/null 2>&1
 		elif which invoke-rc.d >/dev/null 2>&1 ; then
 			if [ -f /etc/init.d/$BLD_PRODUCT ] ; then
 				invoke-rc.d $BLD_PRODUCT $action
@@ -121,8 +121,8 @@ configureService() {
             local company=`echo $BLD_COMPANY | tr '[A-Z]' '[a-z']`
             launchctl load /Library/LaunchDaemons/com.${company}.${BLD_PRODUCT}.plist
 		elif which chkconfig >/dev/null 2>&1 ; then
-			/sbin/chkconfig --add $BLD_PRODUCT >/dev/null
-			/sbin/chkconfig --level 5 $BLD_PRODUCT on >/dev/null
+			chkconfig --add $BLD_PRODUCT >/dev/null
+			chkconfig --level 5 $BLD_PRODUCT on >/dev/null
 
 		elif which update-rc.d >/dev/null 2>&1 ; then
 			update-rc.d $BLD_PRODUCT defaults >/dev/null
@@ -138,7 +138,7 @@ configureService() {
             local company=`echo $BLD_COMPANY | tr '[A-Z]' '[a-z']`
             launchctl unload -w /Library/LaunchDaemons/com.${company}.${BLD_PRODUCT}.plist 2>/dev/null
 		elif which chkconfig >/dev/null 2>&1 ; then
-			/sbin/chkconfig --del $BLD_PRODUCT >/dev/null 2>&1
+			chkconfig --del $BLD_PRODUCT >/dev/null 2>&1
 		elif which update-rc.d >/dev/null 2>&1 ; then
 			update-rc.d -f $BLD_PRODUCT remove >/dev/null
 		fi

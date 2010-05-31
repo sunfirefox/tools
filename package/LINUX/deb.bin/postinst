@@ -92,8 +92,8 @@ configureService() {
 
 		if which chkconfig >/dev/null 2>&1 
 		then
-			/sbin/chkconfig --add $BLD_PRODUCT
-			/sbin/chkconfig --level 5 $BLD_PRODUCT on
+			chkconfig --add $BLD_PRODUCT
+			chkconfig --level 5 $BLD_PRODUCT on
 
 		elif which update-rc.d >/dev/null 2>&1 
 		then
