@@ -10,8 +10,6 @@
 ./build/src/getpath.c
 ./build/src/posix.h
 ./obj/Makefile
-./package/WIN/Makefile
-./package/WIN/removeFiles.c
 ./doc/licenses/Makefile
 ./build/bin/Makefile
 ./build/bin/all-in-one
