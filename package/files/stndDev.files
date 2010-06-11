@@ -1,7 +1,0 @@
-#
-#	stndDev.files - Files needed for the binary installation 
-#
-#	Copyright (c) Embedthis Software LLC, 2003-2010. All Rights Reserved.
-#
-
-cpmod buildConfig.h ${BLD_SRC_PREFIX}
