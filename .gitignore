@@ -51,3 +51,5 @@ build/bin/pp*
 build/bin/getpath
 build/bin/edep
 lib/*.so
+extensions
+releases
