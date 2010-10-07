@@ -24,6 +24,7 @@ BLD_DEBUG=1                             # Set to 1 if DEBUG
 BLD_CLEAN_INSTALL=0                     # Overwrite existing installations
 BLD_LICENSE=gpl
 BLD_COMMERCIAL=0
+BLD_CHAR_LEN=1
 
 #
 #   Include settings common to all configurations
