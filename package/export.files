@@ -1,6 +1,6 @@
 build/Makefile
 build/bin/Makefile
-build/bin/all-in-one
+build/bin/combo
 build/bin/bld
 build/bin/config.guess
 build/bin/config.sub
