@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#   combo -- Make a combined source file
+#   dist -- Make an amalgamated distribution source file
 #   Copyright (c) Embedthis LLC, 2003-2010. All Rights Reserved.
 #
 

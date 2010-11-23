@@ -1,9 +1,9 @@
 build/Makefile
 build/bin/Makefile
-build/bin/combo
 build/bin/bld
 build/bin/config.guess
 build/bin/config.sub
+build/bin/dist
 build/bin/fakePriv
 build/bin/gendoc.es
 build/bin/getcygpath
