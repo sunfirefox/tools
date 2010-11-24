@@ -705,6 +705,8 @@ else
             RPATH_LIST="${BLD_LIB_PREFIX} ${BLD_MOD_PREFIX} $RPATH_LIST"
         fi
         RPATH_LIST="ORIGIN/ ORIGIN/../$libdir ORIGIN/../$moddir $RPATH_LIST"
+    else 
+        RPATH_LIST="./${BLD_LIB_NAME} ./${BLD_MOD_NAME} $RPATH_LIST"
     fi
     if [ "$RPATH_LIST" != "" ] ; then
         if [ "$OS" = "LINUX" ] ; then
@@ -944,11 +946,12 @@ else
             #
             if [ "$OS" = MACOSX ] ; then
                 INSTALL_NAME="-install_name @rpath/`basename $SHARED_LIBRARY`"
+            elif [ "$OS" = LINUX ] ; then
+                ERRORS="-Wl,--no-allow-shlib-undefined"
             fi
             run "${LINKER}" -o ${SHARED_LIBRARY} ${SONAME_SWITCH} ${INSTALL_NAME} ${DSO} ${LOBJS} \
                 ${MAKE_LDFLAGS} ${BLD_LDFLAGS} ${_LDFLAGS} ${MAKE_CFLAGS} ${BLD_CFLAGS} ${_CFLAGS} \
-                ${LINK_LIBRARY_PATHS} -L${_LDPATH} ${RPATH} ${LIB_LIST} \
-                ${STND_LIBS}
+                ${LINK_LIBRARY_PATHS} -L${_LDPATH} ${RPATH} ${LIB_LIST} ${STND_LIBS} ${ERRORS}
             if [ $? != 0 ] ; then
                 echo "bld: $LINKER failed"
                 log "DETAILS" `traceArgs $ARGS`

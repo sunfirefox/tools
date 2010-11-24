@@ -90,7 +90,6 @@ build/search.config
 build/src/Makefile
 build/src/dsi.c
 build/src/edep.c
-build/src/getpath.c
 build/src/posix.h
 configure
 doc/licenses/Makefile
