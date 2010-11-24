@@ -84,7 +84,6 @@ build/make/make.VXWORKS
 build/make/make.WIN
 build/make/make.WINCE
 build/make/make.gcc
-build/make/make.java
 build/make/make.rules
 build/search.config
 build/src/Makefile
@@ -93,4 +92,3 @@ build/src/edep.c
 build/src/posix.h
 configure
 doc/licenses/Makefile
-obj/Makefile

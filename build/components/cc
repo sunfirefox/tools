@@ -186,15 +186,17 @@ setCompilerOptions()
 
 emitCompilerOptions()
 {
-    local v
-    eval v=\$${KIND}_HAS_CYGWIN ;           echo -e "\tBLD_CC_CYGWIN=$v"
-    eval v=\$${KIND}_HAS_DIAB ;             echo -e "\tBLD_CC_DIAB=$v"
-    eval v=\$${KIND}_HAS_DOUBLE_BRACES ;    echo -e "\tBLD_CC_DOUBLE_BRACES=$v"
-    eval v=\$${KIND}_HAS_DYN_LOAD ;         echo -e "\tBLD_CC_DYN_LOAD=$v"
-    eval v=\$${KIND}_HAS_MTUNE ;            echo -e "\tBLD_CC_MTUNE=$v"
-    eval v=\$${KIND}_HAS_MMU ;              echo -e "\tBLD_CC_MMU=$v"
-    eval v=\$${KIND}_HAS_WARN_UNUSED ;      echo -e "\tBLD_CC_WARN_UNUSED=$v"
-    eval v=\$${KIND}_HAS_EDITLINE ;         echo -e "\tBLD_CC_EDITLINE=$v"
-    eval v=\$${KIND}_HAS_STACK_PROTECTOR ;  echo -e "\tBLD_CC_STACK_PROTECTOR=$v"
+    local v t
+
+    [ $BLD_CROSS = 1 ] && t="\t"
+    eval v=\$${KIND}_HAS_CYGWIN ;           echo -e "${t}BLD_CC_CYGWIN=$v"
+    eval v=\$${KIND}_HAS_DIAB ;             echo -e "${t}BLD_CC_DIAB=$v"
+    eval v=\$${KIND}_HAS_DOUBLE_BRACES ;    echo -e "${t}BLD_CC_DOUBLE_BRACES=$v"
+    eval v=\$${KIND}_HAS_DYN_LOAD ;         echo -e "${t}BLD_CC_DYN_LOAD=$v"
+    eval v=\$${KIND}_HAS_MTUNE ;            echo -e "${t}BLD_CC_MTUNE=$v"
+    eval v=\$${KIND}_HAS_MMU ;              echo -e "${t}BLD_CC_MMU=$v"
+    eval v=\$${KIND}_HAS_WARN_UNUSED ;      echo -e "${t}BLD_CC_WARN_UNUSED=$v"
+    eval v=\$${KIND}_HAS_EDITLINE ;         echo -e "${t}BLD_CC_EDITLINE=$v"
+    eval v=\$${KIND}_HAS_STACK_PROTECTOR ;  echo -e "${t}BLD_CC_STACK_PROTECTOR=$v"
 }
 
