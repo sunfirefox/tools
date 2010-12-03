@@ -8,7 +8,7 @@ include 	.makedep
 
 STAGING			:= $(PWD)/staging
 TDIR			:= $(STAGING)/tools-$(BLD_VERSION)
-REL_DIR			:= ../releases
+REL_DIR			:= $(BLD_OUT_DIR)/releases
 DIST_VER_NAME	:= tools-$(BLD_VERSION)-dist.tgz
 DIST_PERM_NAME	:= tools-dist.tgz
 DIST_VER		:= $(REL_DIR)/$(DIST_VER_NAME)
@@ -18,6 +18,7 @@ dist packageExtra: prep $(DIST_VER)
 
 prep:
 	rm -fr $(STAGING) $(DIST_VER) $(DIST_PERM)
+	mkdir -p $(REL_DIR)
 
 $(DIST_VER): 
 	$(call log) "[PACKAGE]" "Make tools-dist.tgz"

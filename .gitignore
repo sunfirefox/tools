@@ -53,3 +53,4 @@ build/bin/edep
 lib/*.so
 extensions
 releases
+out

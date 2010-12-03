@@ -52,18 +52,9 @@ with --os=win --build --optional pkg
 
 ###############################################################################
 #
-#   Feature Selection
-#
-
-#
 #   Turn assert checking on. Good for a debug build
 #
 BLD_FEATURE_ASSERT=1
-
-#
-#   Decimal (128 bit integer) support
-#
-BLD_FEATURE_DECIMAL=0
 
 #
 #   Documentation support

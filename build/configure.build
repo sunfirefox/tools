@@ -13,18 +13,15 @@ applyDependencies()
     :
 }
 
-
 manageFeatures()
 {
     :
 }
 
-
 createFeatureConfig()
 {
     :
 }
-
 
 help()
 {
