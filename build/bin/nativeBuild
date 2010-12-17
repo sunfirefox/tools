@@ -7,9 +7,11 @@
 #
 
 : ${BLD_OUT_DIR:=$BLD_TOP/out}
-. ${BLD_OUT_DIR}/bin/buildConfig.sh
 
-VS="/Program Files/Microsoft Visual Studio 8/Common7/IDE/devenv.exe"
+#   MOB - should not be tied to one version
+VS="/Program Files*/Microsoft Visual Studio 10.0/Common7/IDE/devenv.exe"
+
+. `cacheConfig ${BLD_OUT_DIR}/include/buildConfig.h`
 
 log() {
     tag=$1

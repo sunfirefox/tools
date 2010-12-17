@@ -1,6 +1,7 @@
 build/Makefile
 build/bin/Makefile
 build/bin/bld
+build/bin/cacheConfig
 build/bin/config.guess
 build/bin/config.sub
 build/bin/dist

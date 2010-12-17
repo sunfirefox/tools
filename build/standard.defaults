@@ -8,7 +8,7 @@
 #   dynamically linked with the ability to load modules. 
 #
 #   These initial defaults are read by configure when first creating the
-#   configuration files: buildConfig.make, buildConfig.sh and buildConfig.h
+#   buildConfig.h configuration files.
 #
 
 ###############################################################################
@@ -26,7 +26,7 @@ BLD_LICENSE=gpl
 BLD_COMMERCIAL=0
 BLD_CHAR_LEN=1
 BLD_CHAR=char
-
+BLD_STATIC=0
 #
 #   Include settings common to all configurations
 #
@@ -80,12 +80,6 @@ BLD_FEATURE_MULTITHREAD=1
 #   Build the samples
 #
 BLD_FEATURE_SAMPLES=1
-
-#
-#   Build libraries as shared libraries or as static libraries
-#
-BLD_FEATURE_SHARED=1
-BLD_FEATURE_STATIC=0
 
 #
 #   Build the test suite

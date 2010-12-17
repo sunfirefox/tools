@@ -2,13 +2,13 @@
 #   Script to assist with building Jems for Xcode 
 #
 TOP=../../..
-
-: ${BLD_OUT_DIR:=$BLD_TOP/out}
-. ${BLD_OUT_DIR}/bin/buildConfig.sh
-
 VERSION=$BLD_VERSION
 REQUIRE=
 JEMS=$TOP/src/jems
+
+: ${BLD_OUT_DIR:=$BLD_TOP/out}
+
+. `cacheConfig ${BLD_OUT_DIR}/include/buildConfig.h`
 
 while [ "${1#--}" != "$1" ] ; do
 
