@@ -22,3 +22,11 @@ file.list: Makefile ../api/gen/$(BLD_PRODUCT)/doxygen.css
 
 cleanExtra:
 	rm -f file.list 
+
+#
+#   Local variables:
+#   tab-width: 4
+#   c-basic-offset: 4
+#   End:
+#   vim: sw=4 ts=4
+#

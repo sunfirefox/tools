@@ -54,3 +54,11 @@ vx:
 	unset WIND_HOME WIND_BASE ; SEARCH_PATH=/tornado ./configure --host=i386-wrs-vxworks
 
 sync: dummy
+
+#
+#   Local variables:
+#   tab-width: 4
+#   c-basic-offset: 4
+#   End:
+#   vim: sw=4 ts=4
+#

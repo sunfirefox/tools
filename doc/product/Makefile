@@ -14,3 +14,11 @@ index.html: $(BLD_TOP)/buildConfig.h Makefile
 	cp index.html index.new
 	sed "s/$(BLD_NAME) Documentation.*</$(BLD_NAME) Documentation $(BLD_VERSION)</" < index.new >index.html
 	rm -f index.new
+
+#
+#   Local variables:
+#   tab-width: 4
+#   c-basic-offset: 4
+#   End:
+#   vim: sw=4 ts=4
+#
