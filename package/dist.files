@@ -48,11 +48,11 @@ build/components/munch
 build/components/mysql
 build/components/nm
 build/components/openssl
+build/components/pcre
 build/components/php
 build/components/pkg
 build/components/ranlib
 build/components/rc
-build/components/regexp
 build/components/sqlite
 build/components/ssl
 build/components/strip

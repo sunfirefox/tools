@@ -36,24 +36,10 @@
 
 include		build/make/Makefile.top
 
-config:
-	./configure
-	make depend clean >/dev/null
-
-release:
-	./configure --release
-	make depend clean >/dev/null
-
-config64:
-	./configure --host=x86_64-apple-darwin --build=x86_64-apple-darwin
-
-cross64:
-	./configure --static --host=x86_64-apple-darwin
-
-vx:
-	unset WIND_HOME WIND_BASE ; SEARCH_PATH=/tornado ./configure --host=i386-wrs-vxworks
-
 sync: dummy
+
+compileFinal:
+	    make dist
 
 #
 #   Local variables:
