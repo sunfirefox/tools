@@ -24,7 +24,7 @@ $(REL_DIR)/$(DIST_VER_NAME):
 	$(call log) "[Generate]" "tar cfz $(REL_DIR)/$(DIST_VER_NAME) -C $(STAGE_DIR) ."
 	tar cfz $(REL_DIR)/$(DIST_VER_NAME) -C $(STAGE_DIR) .
 	ln -s $(DIST_VER_NAME) $(REL_DIR)/$(DIST_PERM_NAME)
-	echo rm -fr $(STAGE_DIR)
+	rm -fr $(STAGE_DIR)
 
 cleanExtra:
 	rm -fr $(STAGE_DIR) $(REL_DIR)/$(DIST_VER_NAME) $(REL_DIR)/$(DIST_PERM_NAME)
