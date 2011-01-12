@@ -39,7 +39,7 @@ include		build/make/Makefile.top
 sync: dummy
 
 compileFinal:
-	    make dist
+	make dist
 
 #
 #   Local variables:
