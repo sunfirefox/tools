@@ -19,11 +19,12 @@ prep:
 
 $(REL_DIR)/$(DIST_VER_NAME): 
 	$(call log) "[PACKAGE]" "Make tools-dist.tgz"
-	cd .. ; cat package/dist.files | cpio --quiet -pdum $(BLD_OUT_DIR)/staging/$(VNAME)
+	mkdir -p $(BLD_OUT_DIR)/staging/$(VNAME)
+	cd .. ; tar -pc -T package/dist.files | tar xpf - -C "$(BLD_ABS_OUT_DIR)/staging/$(VNAME)"
 	$(call log) "[Generate]" "tar cfz $(REL_DIR)/$(DIST_VER_NAME) -C $(STAGE_DIR) ."
 	tar cfz $(REL_DIR)/$(DIST_VER_NAME) -C $(STAGE_DIR) .
 	ln -s $(DIST_VER_NAME) $(REL_DIR)/$(DIST_PERM_NAME)
-	rm -fr $(STAGE_DIR)
+	echo rm -fr $(STAGE_DIR)
 
 cleanExtra:
 	rm -fr $(STAGE_DIR) $(REL_DIR)/$(DIST_VER_NAME) $(REL_DIR)/$(DIST_PERM_NAME)
