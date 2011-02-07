@@ -26,7 +26,6 @@ BLD_LICENSE=gpl
 BLD_COMMERCIAL=0
 BLD_CHAR_LEN=1
 BLD_CHAR=char
-BLD_STATIC=0
 #
 #   Include settings common to all configurations
 #
