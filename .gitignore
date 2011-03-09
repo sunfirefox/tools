@@ -54,3 +54,4 @@ lib/*.so
 extensions
 releases
 out
+.embedthis
