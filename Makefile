@@ -38,9 +38,6 @@ include		build/make/Makefile.top
 
 sync: dummy
 
-compileFinal:
-	make dist
-
 #
 #   Local variables:
 #   tab-width: 4

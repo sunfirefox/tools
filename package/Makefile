@@ -18,7 +18,7 @@ prep:
 	mkdir -p $(STAGE_DIR) $(REL_DIR)
 
 $(REL_DIR)/$(DIST_VER_NAME): 
-	$(call log) "[PACKAGE]" "Make tools-dist.tgz"
+	$(call log) "[Package]" "Make tools-dist.tgz"
 	mkdir -p $(BLD_OUT_DIR)/staging/$(VNAME)
 	cd .. ; tar -pc -T package/dist.files | tar xpf - -C "$(BLD_ABS_OUT_DIR)/staging/$(VNAME)"
 	$(call log) "[Generate]" "tar cfz $(REL_DIR)/$(DIST_VER_NAME) -C $(STAGE_DIR) ."
