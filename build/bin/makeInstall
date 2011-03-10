@@ -250,8 +250,12 @@ setup() {
     . ${BLD_TOP}/build/bin/makePackage.common
     . package/makeInstall.${BLD_PRODUCT}
 
-    if [ ! -x ${BLD_OUT_DIR}/bin/dsi${BLD_EXE} ] ; then
-        echo "Must compile first before installing"
+    [ $TASK = Install ] && VERB=Installing
+    [ $TASK = Package ] && VERB=Copy
+    [ $TASK = Remove ] && VERB=Removing
+
+    if [ ! -x ${BLD_BUILD_BIN_DIR}/dsi* ] ; then
+        echo "Must compile first before $VERB"
         exit 255
     fi
     ROOT_DIR=`${BLD_OUT_DIR}/bin/getpath -a "${ROOT_DIR}"`
@@ -273,10 +277,6 @@ setup() {
         ROOT_DIR=`cygpath -u $ROOT_DIR`
         ROOT_DIR=`cygpath -am $ROOT_DIR`
     fi
-
-    [ $TASK = Install ] && VERB=Installing
-    [ $TASK = Package ] && VERB=Copy
-    [ $TASK = Remove ] && VERB=Removing
 
     if [ $TASK = Package ] ; then
         dir=$ROOT_DIR
