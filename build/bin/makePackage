@@ -287,7 +287,7 @@ sum() {
     dir=${file%/*}                  # dirname
 
     cd "$dir" >/dev/null
-    log Checksum "$MD5 ${base} md5-${base}.txt"
+    log Checksum "$MD5 ${base}"
     $MD5 "${base}" | awk '{ print $1 }' > "${dir}/md5-${base}.txt"
     chmod 755 "${dir}/md5-${base}.txt"
     chown `id -ru` "${dir}/md5-${base}.txt"
