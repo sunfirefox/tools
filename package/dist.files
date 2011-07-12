@@ -32,7 +32,6 @@ build/bin/utest.worker
 build/bin/valparse
 build/bin/valtest
 build/components/README
-build/components/apache
 build/components/appweb
 build/components/ar
 build/components/cc
