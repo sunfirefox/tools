@@ -11,7 +11,7 @@
 #   MOB - should not be tied to one version
 VS="/Program Files*/Microsoft Visual Studio 10.0/Common7/IDE/devenv.exe"
 
-. `cacheConfig ${BLD_OUT_DIR}/include/buildConfig.h`
+. `cacheConfig ${BLD_OUT_DIR}/inc/buildConfig.h`
 
 log() {
     tag=$1
@@ -22,10 +22,10 @@ log() {
 winBuild() {
     local status=0
     if [ -x "${VS}" ] ; then
-        if [ ! -f src/include/buildConfig.save ] ; then
-            mv src/include/buildConfig.h src/include/buildConfig.save
+        if [ ! -f out/inc/buildConfig.save ] ; then
+            mv out/inc/buildConfig.h out/inc/buildConfig.save
         fi
-        cp src/include/master/buildConfig.h src/include
+        cp out/inc/master/buildConfig.h src/inc
 
         log "[Test]" "Building ${BLD_PRODUCT}-dynamic VS project"
         rm -fr projects/WIN/*/Win32
@@ -38,8 +38,8 @@ winBuild() {
             echo Failed to build: "${VS}" projects/WIN/${BLD_PRODUCT}-dynamic/*.sln /build
         fi
 
-        if [ -f src/include/buildConfig.save ] ; then
-            mv src/include/buildConfig.save src/include/buildConfig.h
+        if [ -f out/inc/buildConfig.save ] ; then
+            mv out/inc/buildConfig.save out/inc/buildConfig.h
         fi
         rm -fr projects/WIN/*/Win32
 

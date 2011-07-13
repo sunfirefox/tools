@@ -8,7 +8,7 @@ JEMS=$TOP/src/jems
 
 : ${BLD_OUT_DIR:=$BLD_TOP/out}
 
-. `cacheConfig ${BLD_OUT_DIR}/include/buildConfig.h`
+. `cacheConfig ${BLD_OUT_DIR}/inc/buildConfig.h`
 
 while [ "${1#--}" != "$1" ] ; do
 
@@ -68,5 +68,5 @@ fi
 
 echo ejsmod --showDebug $REQUIRE --cslots --search $DEST $MODULE
 ejsmod --showDebug $REQUIRE --cslots --search $DEST $MODULE || rm -f $MODULE
-diff $NAME.slots.h ../../include >/dev/null 2>&1 || cp $NAME.slots.h ../../include
+diff $NAME.slots.h ../../out/inc >/dev/null 2>&1 || cp $NAME.slots.h ../../out/inc
 rm -f *.slots.h
