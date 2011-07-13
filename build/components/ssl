@@ -5,7 +5,7 @@ defineComponent() {
 	local iflags libpaths deps path search ver builtin imports
 
     path="${1:-.}"
-    iflags=-I`probe --name mprSsl.h --dir --search "$path:$path/src/deps/mpr:$path/src/include" "mprSsl.h"`
+    iflags=-I`probe --name mprSsl.h --dir --search "$path:$path/src/deps/mpr:$path/src/inc" "mprSsl.h"`
     imports=`probe --name libmprssl --search "$path:$path/out/lib" "libmprssl" `
     if [ "$imports" = "" -a "$path" != "." ] ; then
         warnComponent mprSsl "Can't locate libmprssl"
