@@ -1,0 +1,106 @@
+STABLE	:= mpr.stable ejs.stable appweb.stable
+
+DEV		:= tools mpr http pcre ejs appweb
+
+all:
+	@for d in $(DEV) ; do \
+		echo ; echo "\nBuilding $$d" ; \
+		cd $$d ; \
+		git pull origin master ; \
+		make sync compile dist ; \
+		cd - ; \
+	done
+	@for d in $(STABLE) ; do \
+		echo ; echo "\nBuilding $$d" ; \
+		cd $$d ; \
+		git pull origin master ; \
+		make sync compile; \
+		cd - ; \
+	done
+
+pull:
+	@for d in $(DEV) ; do \
+		echo ; echo "\nBuilding $$d" ; \
+		cd $$d ; \
+		git pull origin master ; \
+		cd - ; \
+	done
+	@for d in $(STABLE) ; do \
+		echo ; echo "\nBuilding $$d" ; \
+		cd $$d ; \
+		git pull origin master ; \
+		cd - ; \
+	done
+
+check:
+	clear
+	@echo
+	@for d in $(DEV) $(STABLE) ; do \
+		echo "===================================================" ; \
+		echo "Check $$d" ; \
+		cd $$d >/dev/null 2>&1 ; \
+		git status ; \
+		cd - >/dev/null 2>&1 ; \
+		echo ; \
+	done
+
+get:
+	git clone git@github.com:embedthis/mpr-3 mpr.stable
+	git clone git@github.com:embedthis/ejs-1 ejs.stable
+	git clone git@github.com:embedthis/appweb-3 appweb.stable
+	git clone git@github.com:embedthis/mpr-4 mpr
+	git clone git@github.com:embedthis/ejs-2 ejs
+	git clone git@github.com:embedthis/appweb-4 appweb
+	git clone git@github.com:embedthis/tools
+	git clone git@github.com:embedthis/http
+	git clone git@github.com:embedthis/pcre
+	git clone git@github.com:embedthis/farm
+
+test:
+	depth=2 ; \
+	set -e ; \
+	i=0 ; \
+	while [ $$i -lt 1000 ]  ; do \
+		make BUILD_DEPTH=$$depth -C mpr test ; \
+		make BUILD_DEPTH=$$depth -C http test ; \
+		make BUILD_DEPTH=$$depth -C ejs test ; \
+		make BUILD_DEPTH=$$depth -C appweb test ; \
+		echo -e "\n@@@ Completed iteration $$i\n" ; \
+		i=`expr $$i + 1` ; \
+	done
+
+test-stable:
+	set -e ; \
+	i=0 ; \
+	while [ $$i -lt 1000 ]  ; do \
+		make -C mpr.stable test ; \
+		make -C ejs.stable test ; \
+		make -C appweb.stable test ; \
+		echo -e "\n@@@ Completed iteration $$i\n" ; \
+		i=`expr $$i + 1` ; \
+	done
+
+super:
+	depth=5 ; \
+	set -e ; \
+	i=0 ; \
+	while [ $$i -lt 1000 ]  ; do \
+		make BUILD_DEPTH=$$depth -C mpr test ; \
+		make BUILD_DEPTH=$$depth -C http test ; \
+		make BUILD_DEPTH=$$depth -C ejs test ; \
+		make BUILD_DEPTH=$$depth -C appweb test ; \
+		echo -e "\n@@@ Completed iteration $$i\n" ; \
+		i=`expr $$i + 1` ; \
+	done
+
+super-stable:
+	depth=2 ; \
+	set -e ; \
+	i=0 ; \
+	while [ $$i -lt 1000 ]  ; do \
+		make BUILD_DEPTH=$$depth -C mpr.stable test ; \
+		make BUILD_DEPTH=$$depth -C ejs.stable test ; \
+		make BUILD_DEPTH=$$depth -C appweb.stable test ; \
+		echo -e "\n@@@ Completed iteration $$i\n" ; \
+		i=`expr $$i + 1` ; \
+	done
