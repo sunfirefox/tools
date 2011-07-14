@@ -15,28 +15,10 @@
 #		make benchmark 				# Runs benchmarks
 #		make package				# Creates an installable package
 #
-#	Additional targets for this makefile:
-#
-#		make build					# Do a clean build
-#
-#	Installation targets. Use "make DESTDIR=myDir" to do a custom local
-#		install:
-#
-#		make install				# Call install-binary
-#		make install-release		# Install release files (README.TXT etc)
-#		make install-binary			# Install binary files
-#		make install-dev			# Install development libraries and headers
-#		make install-doc			# Install documentation
-#		make install-samples		# Install samples
-#		make install-src			# Install source code
-#		make install-all			# Install everything except source code
-#
 #	To remove, use make uninstall-ITEM, where ITEM is a component above.
 #
 
 include		build/make/Makefile.top
-
-sync: dummy
 
 #
 #   Local variables:
