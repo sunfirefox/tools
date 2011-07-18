@@ -20,7 +20,8 @@ build/bin/fakePriv
 build/bin/gendoc.es
 build/bin/getcygpath
 build/bin/getlib
-build/bin/import.sh
+build/bin/getImports
+build/bin/syncup
 build/bin/leakTest
 build/bin/makeComboPackage
 build/bin/makeDebPackage
