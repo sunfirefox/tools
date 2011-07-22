@@ -34,6 +34,7 @@ build/bin/makeProj
 build/bin/makeRPMPackage
 build/bin/makeTarPackage
 build/bin/makeVsProj
+build/bin/makeVsSol
 build/bin/makeWinPackage
 build/bin/makedep
 build/bin/memmon
