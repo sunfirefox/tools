@@ -52,6 +52,7 @@ build/components/ar
 build/components/cc
 build/components/doxygen
 build/components/ejs
+build/components/ejscript
 build/components/http
 build/components/ld
 build/components/make
