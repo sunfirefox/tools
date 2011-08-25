@@ -10,6 +10,7 @@ DIR="${BLD_OUT_DIR}/staging/${BLD_PRODUCT}-${BLD_VERSION}"
 #	File list
 #
 cat >/tmp/files$$ <<!EOF
+build/README.md
 build/bin/Makefile
 build/bin/bld
 build/bin/cacheConfig
