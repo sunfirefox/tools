@@ -6,7 +6,7 @@ The Embedthis build system is similar to GNU autoconf system. To enhance portabi
 pure autoconf is not used.
 
 Key Files and Directories
-=========================
+-------------------------
 
 * 3rd              - Files to integrate with 3rd party products
 * config           - Directory for per O/S configure settings.
