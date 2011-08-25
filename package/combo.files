@@ -84,9 +84,9 @@ build/config/config.VXWORKS
 build/config/config.WIN
 build/config/config.WINCE
 build/config/config.base
-build/copyrights/commercial/README.TXT
+build/copyrights/commercial/README.md
 build/copyrights/commercial/default
-build/copyrights/gpl/README.TXT
+build/copyrights/gpl/README.md
 build/copyrights/gpl/default
 build/make.config
 build/make/Makefile.top
