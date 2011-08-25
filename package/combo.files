@@ -47,7 +47,7 @@ build/bin/utest
 build/bin/utest.worker
 build/bin/valparse
 build/bin/valtest
-build/components/README
+build/components/README.md
 build/components/appweb
 build/components/ar
 build/components/cc
