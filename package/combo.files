@@ -109,6 +109,7 @@ build/src/getpath.c
 build/src/posix.h
 configure
 doc/licenses/Makefile
+package/copy.es
 !EOF
 
 cat /tmp/files$$ | while read f
