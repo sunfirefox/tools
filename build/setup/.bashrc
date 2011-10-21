@@ -1,25 +1,32 @@
-set -o vi
-PS1='`pwd`> '
-export CDPATH=.:~:~/ejs:~/ejs:~/ejs/src:~/appweb/src
-export PATH=/bin:/usr/local/bin:/opt/local/bin:/usr/local/mysql/bin:$PATH
-
-l() {
-    ls -F $*
-}
-
-lst() {
-    rm -f *.mod
-    ejsc --out default.mod --optimize 9 --debug $*
-    ejsmod --listing default.mod
-    vi *.lst
+ORIG_PATH=$PATH
+export PATH="/home/mob/ejs/bin:/Program Files/mercurial:$PATH"
+m() {
+	make $* | bldout
 }
 
 work() {
-    dir=${1:appweb}
-    cd ~
-    cd $dir
-    _dir=`pwd`
-    top=~/$dir
-    export CDPATH=.:~/$parent:$top:$top/src:$top/src/jems:$CDPATH
-    export PATH=.:$top/out/bin:$top/out/lib:$top/out/modules:$top/bin:$top/lib:$top/modules:$top/build/bin:$PATH
+	local d=~/$1
+	cd $d
+	export CDPATH=".:~:$d:$d/src:$d/src/jems:$CDPATH"
+	export PATH="$d/out/bin:$d/out/lib:$d/bin:$d/lib:$d/build/bin:$PATH"
+}
+
+bare() {
+    export PATH=".:/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:%BTILDIR%/Host/bin:/WINDOWS/system32:/WINDOWS:/Program Files/doxygen/bin"
+}
+
+work appweb
+work ejs
+
+PS1='`pwd`> '
+set -o vi
+
+msbuild() {
+    c:/windows/Microsoft.NET/Framework/v4.0.30319/msbuild.exe $*
+}
+
+utest() {
+    local utest=`which utest`
+    utest=`cygpath -m $utest`
+    ejs $utest $*
 }
