@@ -42,6 +42,7 @@ build/bin/makedep
 build/bin/memmon
 build/bin/memsize
 build/bin/mkdmg
+build/bin/mpr.supp
 build/bin/patchFile
 build/bin/priv
 build/bin/utest
