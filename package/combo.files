@@ -1,18 +1,34 @@
-build/Makefile
+#
+#	combo.files - Files needed for the combo installation
+#
+#	Copyright (c) Embedthis Software LLC, 2003-2011. All Rights Reserved.
+#
+
+WHERE="$1"
+DIR="${BLD_OUT_DIR}/${WHERE}/${BLD_PRODUCT}-${BLD_VERSION}"
+
+#
+#	File list
+#
+cat >/tmp/files$$ <<!EOF
+build/README.md
 build/bin/Makefile
 build/bin/bld
 build/bin/cacheConfig
 build/bin/config.guess
 build/bin/config.sub
-build/bin/dist
+build/bin/combo
 build/bin/fakePriv
 build/bin/gendoc.es
 build/bin/getcygpath
 build/bin/getlib
-build/bin/import.sh
+build/bin/getImports
+build/bin/syncup
 build/bin/leakTest
+build/bin/makeComboPackage
 build/bin/makeDebPackage
 build/bin/makeDmgPackage
+build/bin/makeFlatPackage
 build/bin/makeInstall
 build/bin/makePackage
 build/bin/makePackage.common
@@ -20,24 +36,26 @@ build/bin/makeProj
 build/bin/makeRPMPackage
 build/bin/makeTarPackage
 build/bin/makeVsProj
+build/bin/makeVsSol
 build/bin/makeWinPackage
 build/bin/makedep
 build/bin/memmon
 build/bin/memsize
 build/bin/mkdmg
+build/bin/mpr.supp
 build/bin/patchFile
 build/bin/priv
 build/bin/utest
 build/bin/utest.worker
 build/bin/valparse
 build/bin/valtest
-build/components/README
-build/components/apache
+build/components/README.md
 build/components/appweb
 build/components/ar
 build/components/cc
 build/components/doxygen
 build/components/ejs
+build/components/ejscript
 build/components/http
 build/components/ld
 build/components/make
@@ -69,11 +87,9 @@ build/config/config.VXWORKS
 build/config/config.WIN
 build/config/config.WINCE
 build/config/config.base
-build/copyrights/commercial
-build/copyrights/commercial/README.TXT
+build/copyrights/commercial/README.md
 build/copyrights/commercial/default
-build/copyrights/gpl
-build/copyrights/gpl/README.TXT
+build/copyrights/gpl/README.md
 build/copyrights/gpl/default
 build/make.config
 build/make/Makefile.top
@@ -95,3 +111,21 @@ build/src/getpath.c
 build/src/posix.h
 configure
 doc/licenses/Makefile
+package/copy.es
+!EOF
+
+cat /tmp/files$$ | while read f
+do
+    target="${DIR}/${f}"
+    mkdir -p ${target%/*}
+    cp $f ${DIR}/$f
+done
+rm -f /tmp/files$$
+
+#
+#   Local variables:
+#   tab-width: 4
+#   c-basic-offset: 4
+#   End:
+#   vim: sw=4 ts=4 noexpandtab
+#

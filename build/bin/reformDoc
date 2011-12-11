@@ -1,0 +1,8 @@
+#
+#   Reform the @see API doc strings
+#
+echo -n '    @see' >/tmp/b.tmp
+cat /tmp/a.tmp | sed 's/@see //' | sed 's/,/ /g' | sed 's/  */ /g' | tr ' ' '\n' | sort | uniq | grep -v '^$' | \
+    tr '\n' ' ' | fold -s -w 110 | sed 's/^/        /' >>/tmp/b.tmp
+
+cat /tmp/b.tmp
