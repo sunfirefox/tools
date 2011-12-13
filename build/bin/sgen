@@ -1,0 +1,34 @@
+#!/usr/bin/env ejs
+
+let map = TextStream(File("sitemap.xml", "w"))
+map.writeLine('<?xml version="1.0" encoding="UTF-8"?>')
+map.writeLine('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
+
+let options = Path(".sitemap").readJSON()
+options.include = RegExp(options.include)
+options.exclude = RegExp(options.exclude)
+let site = options.site
+
+/*
+dump(options)
+print("EX " + options.exclude)
+print("TYPE " + typeOf(options.exclude))
+r = /\/blog\/|\/forum\/|\/doc-/
+print(r)
+*/
+
+for each (let file: Path in Path(".").find("*", {recurse: true})) {
+    if (options.exclude && file.match(options.exclude)) {
+        continue
+    }
+    if (options.include && !file.match(options.include)) {
+        continue 
+    }
+    map.writeLine('    <url>')
+    map.writeLine('        <loc>http://' + site + "/" + file + '</loc>')
+    map.writeLine('        <lastmod>' + file.modified.format("%Y-%m-%d") + '</lastmod>')
+    map.writeLine('        <changefreq>weekly</changefreq>')
+    map.writeLine('        <priority>0.5</priority>')
+    map.writeLine('    </url')
+}
+map.writeLine('</urlset>')
