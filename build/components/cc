@@ -155,7 +155,7 @@ setCompilerOptions()
             if [ $? = 0 ] ; then
                 eval $hasDynLoad=1
             else
-                eval \"${cc}\" ${flags} -ldl -o $out $file >/dev/null 2>&1
+                eval \"${cc}\" ${flags} -o $out $file -ldl >/dev/null 2>&1
                 if [ $? = 0 ] ; then
                     eval $hasDynLoad=1
                 fi
