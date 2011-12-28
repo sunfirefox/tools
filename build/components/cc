@@ -151,16 +151,12 @@ setCompilerOptions()
         fi
         echo -e "$vsb\n#include <stdio.h>\nint main() { __sync_synchronize(); return 0; }\n" >$file
         eval \"${cc}\" ${flags} -Werror -Wall -c -o $out -c $file >/dev/null 2>&1
-        rc=$?
-        if [ $rc = 0 ] ; then
+        if [ $? = 0 ] ; then
             eval $hasSync=1
         fi
-        echo -e "$vsb\n#include <stdio.h>\nint main() { void *ptr, __sync_bool_compare_and_swap(&ptr, ptr, ptr); return 0; }\n" >$file
-cp $file /tmp/t.c
-eval echo \"${cc}\" ${flags} -Wall -c -o $out -c $file 
+        echo -e "$vsb\n#include <stdio.h>\nint main() { void *ptr; __sync_bool_compare_and_swap(&ptr, ptr, ptr); return 0; }\n" >$file
         eval \"${cc}\" ${flags} -Wall -c -o $out -c $file >/dev/null 2>&1
-        rc=$?
-        if [ $rc = 0 ] ; then
+        if [ $? = 0 ] ; then
             eval $hasSyncCas=1
         fi
 
