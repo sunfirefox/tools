@@ -17,7 +17,7 @@ defineComponent() {
 
 setCompilerOptions()
 {
-    local out file cc cpu file hasGcc hasStackProtector hasMtune hasDynLoad hasPam hasSync hasUnnamedUnions tune flags
+    local out file cc cpu file hasGcc hasStackProtector hasMtune hasDynLoad hasPam hasSync hasSyncCas hasUnnamedUnions tune flags
 
     eval os=\$BLD_${KIND}_OS
     eval cc=\$CFG_${KIND}_CC
@@ -32,6 +32,7 @@ setCompilerOptions()
     eval hasPam=\${KIND}_HAS_PAM
     eval hasStackProtector=\${KIND}_HAS_STACK_PROTECTOR
     eval hasSync=\${KIND}_HAS_SYNC
+    eval hasSyncCas=\${KIND}_HAS_SYNC_CAS
     eval hasWarnUnused=\${KIND}_HAS_WARN_UNUSED
     eval hasWarn64to32=\${KIND}_HAS_WARN_64TO32
     eval hasUnnamedUnions=\${KIND}_HAS_UNNAMED_UNIONS
@@ -43,6 +44,7 @@ setCompilerOptions()
     eval $hasMtune=0
     eval ${hasDoubleBraces}=0
     eval ${hasSync}=0
+    eval ${hasSyncCas}=0
     eval ${hasDynLoad}=0
     eval ${hasPam}=0
     eval ${hasLibEdit}=0
@@ -146,13 +148,20 @@ setCompilerOptions()
         #
         if [ "$verbose" != 0 ] ; then
             echo -e "    Checking for builtin sync primitives"
-            # echo "         ${cc}" -o $out -c $file 
         fi
         echo -e "$vsb\n#include <stdio.h>\nint main() { __sync_synchronize(); return 0; }\n" >$file
         eval \"${cc}\" ${flags} -Werror -Wall -c -o $out -c $file >/dev/null 2>&1
         rc=$?
         if [ $rc = 0 ] ; then
             eval $hasSync=1
+        fi
+        echo -e "$vsb\n#include <stdio.h>\nint main() { void *ptr, __sync_bool_compare_and_swap(&ptr, ptr, ptr); return 0; }\n" >$file
+cp $file /tmp/t.c
+eval echo \"${cc}\" ${flags} -Wall -c -o $out -c $file 
+        eval \"${cc}\" ${flags} -Wall -c -o $out -c $file >/dev/null 2>&1
+        rc=$?
+        if [ $rc = 0 ] ; then
+            eval $hasSyncCas=1
         fi
 
         if [ $os != VXWORKS ] ; then
@@ -240,6 +249,7 @@ setCompilerOptions()
         eval $hasMmu=1
         eval $hasPam=0
         eval $hasSync=0
+        eval $hasSyncCas=0
         eval $hasUnnamedUnions=1
     fi
     if [ $os = VXWORKS ] ; then
@@ -274,6 +284,7 @@ emitCompilerOptions()
     eval v=\$${KIND}_HAS_PAM ;              echo -e "${t}BLD_CC_PAM=$v"
     eval v=\$${KIND}_HAS_STACK_PROTECTOR ;  echo -e "${t}BLD_CC_STACK_PROTECTOR=$v"
     eval v=\$${KIND}_HAS_SYNC ;             echo -e "${t}BLD_CC_SYNC=$v"
+    eval v=\$${KIND}_HAS_SYNC_CAS ;         echo -e "${t}BLD_CC_SYNC_CAS=$v"
     eval v=\$${KIND}_HAS_UNNAMED_UNIONS ;   echo -e "${t}BLD_CC_UNNAMED_UNIONS=$v"
 }
 
