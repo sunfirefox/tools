@@ -10,13 +10,13 @@
 #		make compile				# Compiles the source
 #		make depend					# Generates the make dependencies
 #		make test 					# Runs unit tests
-#		make leakTest 				# Runs memory leak tests
-#		make loadTest 				# Runs load tests
-#		make benchmark 				# Runs benchmarks
 #		make package				# Creates an installable package
 #
 #	To remove, use make uninstall-ITEM, where ITEM is a component above.
 #
+
+DEPS		=
+PRE_DIRS	= build src doc projects package
 
 include		build/make/Makefile.top
 

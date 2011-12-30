@@ -103,6 +103,7 @@ build/make/make.WIN
 build/make/make.WINCE
 build/make/make.gcc
 build/make/make.rules
+build/make/make.targets
 build/search.config
 build/src/Makefile
 build/src/dsi.c
