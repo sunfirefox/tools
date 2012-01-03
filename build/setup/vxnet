@@ -1,5 +1,26 @@
 #!/bin/bash
 
+### BEGIN INIT INFO
+# Provides:          vxnet
+# Required-Start:    $local_fs $remote_fs $network $syslog
+# Required-Stop:
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: Embedthis VxWorks daemons
+# Description:       Embedthis VxWorks daemons
+### END INIT INFO
+
+#
+#   chkconfig: - 81 15
+#   description: Embedthis VxWorks daemons
+#   processname: lmgrd
+#
+
+#   Installing:
+#       update-rc.d vxnet defaults 90 10
+#   Removing:
+#       update-rc.d -f vxnet remove
+
 test -f /lib/lsb/init-functions || exit 1
 . /lib/lsb/init-functions
 
