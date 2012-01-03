@@ -12,9 +12,10 @@ case "$1" in
     ;;
   stop)
     log_begin_msg "Disabling vxnet ..."
-    killall vxsimnetd
-    killall lmgrd
-    killall wrsd
+    killall vxsimnetd 2>/dev/null
+    killall lmgrd 2>/dev/null
+    killall wrsd 2>/dev/null
+    killall wtxregd.ex 2>/dev/null
     log_end_msg 0
     ;;
   *)
