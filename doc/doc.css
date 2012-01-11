@@ -356,7 +356,7 @@ a:hover {
 	color: #CC4477; 
 }
 
-UNUSED img.nav {
+img.nav {
 	border: 0px solid;
 	position: relative; 
 	left: -5px;
@@ -619,20 +619,6 @@ A.qindex:visited {
 A.qindex:hover {
 	text-decoration: none;
 	xbackground-color: #ddddff;
-}
-
-UNUSEDA.qindexHL {
-	text-decoration: none;
-	font-weight: bold;
-	background-color: #6666cc;
-	color: #ffffff;
-	border: 1px double #9295C2;
-}
-
-UNUSEDA.qindexHL:hover {
-	text-decoration: none;
-	background-color: #6666cc;
-	color: #ffffff;
 }
 
 A.qindexHL:visited { text-decoration: none; background-color: #6666cc; color: #ffffff }
@@ -925,17 +911,6 @@ table.memname td {
 
 .memdoc{
   padding-left: 10px;
-}
-
-UNUSED.memproto {
-  xbackground-color: #d5e1e8;
-  xbackground-color: #FFFFFF
-  xwidth: 100%;
-  xborder-width: 1px;
-  xborder-style: none;
-  xborder-color: #84b0c7;
-  xfont-weight: bold;
-  x-moz-border-radius: 8px 8px 8px 8px;
 }
 
 .paramkey {
