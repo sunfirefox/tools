@@ -52,7 +52,7 @@ defineComponent() {
         [ "$dir" = "" ] && dir=.
         if [ "$BLD_CROSS" = 1 ] ; then
             out=out/${BLD_HOST_SYSTEM}
-            search="${dir}/${out}/lib:${dir}/${out}/bin:${dir}/${out}/inc:${dir}"
+            search="${dir}/${out}/lib:${dir}/${out}/bin:${dir}/out/inc:${dir}"
         else 
             search="${dir}/out/lib:${dir}/out/bin:${dir}/out/inc:${dir}"
         fi
