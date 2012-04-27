@@ -28,8 +28,6 @@ createSpecFile() {
 
     name=`createPackageName ${BLD_PRODUCT}`
     RPM_SPEC_FILE=$RPM_DIR/SPECS/${name}.spec
-
-    cp package/${BLD_HOST_OS}/rpm.spec $RPM_SPEC_FILE
     cp package/${BLD_HOST_OS}/rpm.spec $RPM_SPEC_FILE
     patchFile $RPM_SPEC_FILE
     if [ "$BLD_CPU" = i686 ] ; then
