@@ -1,13 +1,13 @@
 STABLE	:= mpr.stable ejs.stable appweb.stable
 
-DEV		:= tools mpr http pcre ejs appweb
+DEV		:= mpr http pcre ejs appweb
 
 all:
 	@for d in $(DEV) ; do \
 		echo ; echo "\nBuilding $$d" ; \
 		cd $$d ; \
 		git pull origin master ; \
-		make sync compile dist ; \
+		bit sync compile package ; \
 		cd - ; \
 	done
 	@for d in $(STABLE) ; do \
@@ -15,20 +15,6 @@ all:
 		cd $$d ; \
 		git pull origin master ; \
 		make sync compile; \
-		cd - ; \
-	done
-
-pull:
-	@for d in $(DEV) ; do \
-		echo ; echo "\nBuilding $$d" ; \
-		cd $$d ; \
-		git pull origin master ; \
-		cd - ; \
-	done
-	@for d in $(STABLE) ; do \
-		echo ; echo "\nBuilding $$d" ; \
-		cd $$d ; \
-		git pull origin master ; \
 		cd - ; \
 	done
 
