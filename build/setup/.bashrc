@@ -4,8 +4,8 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-if [ "$LOGIN_SHELL" = "" ] ; then
-    export LOGIN_SHELL=1
+if [ "$XLOGIN_SHELL" = "" ] ; then
+    export XLOGIN_SHELL=1
     # User specific aliases and functions
 
     ORIG_PATH=$PATH
@@ -28,4 +28,6 @@ if [ "$LOGIN_SHELL" = "" ] ; then
 
     PS1='`pwd`> '
     set -o vi
+else
+    [ `id -u` = 0 ] && PS1="# "
 fi
